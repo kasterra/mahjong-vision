@@ -7,6 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+roboflow = "^1.1.7"
+ultralytics = "^8.0.205"
+pillow = "^10.1.0"
+mahjong = "^1.2.1"
 
 
 [build-system]
