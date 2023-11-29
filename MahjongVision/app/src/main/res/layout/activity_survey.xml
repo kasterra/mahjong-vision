@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoreInformation"
+    tools:context=".SurveyActivity"
     android:orientation="vertical">
 
     <ImageView
@@ -90,22 +90,22 @@
             android:orientation="horizontal"
             android:gravity="center">
             <RadioButton
-                android:id="@+id/prevailWindEast"
+                android:id="@+id/prevalentWindEast"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="동" />
             <RadioButton
-                android:id="@+id/prevailWindSouth"
+                android:id="@+id/prevalentWindSouth"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="남" />
             <RadioButton
-                android:id="@+id/prevailWindWest"
+                android:id="@+id/prevalentWindWest"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="서" />
             <RadioButton
-                android:id="@+id/prevailWindNorth"
+                android:id="@+id/prevalentWindNorth"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="북" />
@@ -123,22 +123,22 @@
             android:orientation="horizontal"
             android:gravity="center">
             <RadioButton
-                android:id="@+id/selfWindEast"
+                android:id="@+id/seatWindEast"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="동" />
             <RadioButton
-                android:id="@+id/selfWindSouth"
+                android:id="@+id/seatWindSouth"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="남" />
             <RadioButton
-                android:id="@+id/selfWindWest"
+                android:id="@+id/seatWindWest"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="서" />
             <RadioButton
-                android:id="@+id/selfWindNorth"
+                android:id="@+id/seatWindNorth"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="북" />
@@ -171,7 +171,7 @@
                 android:text="영상개화" />
 
             <RadioButton
-                android:id="@+id/haJeoh"
+                android:id="@+id/haiTei"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="하저/해저" />

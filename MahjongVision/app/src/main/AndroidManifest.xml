@@ -20,13 +20,16 @@
         android:theme="@style/Theme.MahjongVision"
         tools:targetApi="31">
         <activity
-            android:name=".TakePicture"
+            android:name=".ResultActivity"
             android:exported="false" />
         <activity
-            android:name=".MoreInformation"
+            android:name=".CameraActivity"
             android:exported="false" />
         <activity
-            android:name=".HowToUse"
+            android:name=".SurveyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GuideActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

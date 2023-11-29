@@ -23,12 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.questionMark.setOnClickListener {
             //Log.d("question Mark", "clicked")
-            val intent = Intent(this, HowToUse::class.java)
+            val intent = Intent(this, GuideActivity::class.java)
             startActivity(intent)
         }
 
         binding.startBtn.setOnClickListener {
-            val intent = Intent(this, TakePicture::class.java)
+            val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
         }
         /*

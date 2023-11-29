@@ -9,14 +9,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import com.google.common.util.concurrent.ListenableFuture
-import com.skeep.mahjongvision.databinding.ActivityTakePictureBinding
+import com.skeep.mahjongvision.databinding.ActivityCameraBinding
 
-class TakePicture : AppCompatActivity() {
+class CameraActivity : AppCompatActivity() {
     private lateinit var cameraProviderFuture : ListenableFuture<ProcessCameraProvider>
-    private lateinit var binding : ActivityTakePictureBinding
+    private lateinit var binding : ActivityCameraBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTakePictureBinding.inflate(layoutInflater)
+        binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
@@ -26,7 +26,7 @@ class TakePicture : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
 
         binding.pictureBtn.setOnClickListener{
-            val intent = Intent(this,  MoreInformation::class.java)
+            val intent = Intent(this,  SurveyActivity::class.java)
             startActivity(intent)
         }
     }
