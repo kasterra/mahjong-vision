@@ -11,154 +11,178 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/majan_woman"
-        android:layout_weight="2"/>
+        android:layout_weight="3"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="화료 방법"
+            android:textAlignment="center"
             android:textSize="25sp" />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
-            <Button
+            <RadioButton
+                android:id="@+id/tsumo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="쯔모" />
 
-            <Button
+            <RadioButton
+                android:id="@+id/ron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="론" />
-        </LinearLayout>
+        </RadioGroup>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="리치 여부"
+            android:textAlignment="center"
             android:textSize="25sp" />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
-            <Button
+            <RadioButton
+                android:id="@+id/noRichi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="없음" />
 
-            <Button
+            <RadioButton
+                android:id="@+id/richi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="리치" />
 
-            <Button
+            <RadioButton
+                android:id="@+id/doubleRichi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="더블 리치" />
-        </LinearLayout>
+        </RadioGroup>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="장풍패"
+            android:textAlignment="center"
             android:textSize="25sp" />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <RadioButton
+                android:id="@+id/prevailWindEast"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="동" />
-
-            <Button
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/prevailWindSouth"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="남" />
-
-            <Button
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/prevailWindWest"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="서" />
-            <Button
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/prevailWindNorth"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="북" />
-        </LinearLayout>
+        </RadioGroup>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="자풍패"
+            android:textAlignment="center"
             android:textSize="25sp" />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <RadioButton
+                android:id="@+id/selfWindEast"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="동" />
-
-            <Button
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/selfWindSouth"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="남" />
-
-            <Button
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/selfWindWest"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="서" />
-            <Button
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/selfWindNorth"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="북" />
-        </LinearLayout>
+        </RadioGroup>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="특수화료"
-            android:textSize="25sp" />
+            android:textAlignment="center"
+            android:textSize="25sp"
+            />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
-            <Button
+            <RadioButton
+                android:id="@+id/changKkang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="창깡" />
 
-            <Button
+            <RadioButton
+                android:id="@+id/youngSangGaeHwa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="영상개화" />
 
-            <Button
+            <RadioButton
+                android:id="@+id/haJeoh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="하저/해저" />
-        </LinearLayout>
+        </RadioGroup>
+
 
     </LinearLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="입력 끝"
+        android:text="확인"
         android:layout_gravity="center"
         android:id="@+id/post_btn"/>
 </LinearLayout>
