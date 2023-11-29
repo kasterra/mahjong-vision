@@ -20,6 +20,9 @@
         android:theme="@style/Theme.MahjongVision"
         tools:targetApi="31">
         <activity
+            android:name=".ConfirmationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResultActivity"
             android:exported="false" />
         <activity

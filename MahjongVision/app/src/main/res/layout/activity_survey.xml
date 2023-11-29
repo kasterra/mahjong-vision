@@ -28,6 +28,7 @@
             android:textSize="25sp" />
 
         <RadioGroup
+            android:id="@+id/winningMethod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -54,6 +55,7 @@
             android:textSize="25sp" />
 
         <RadioGroup
+            android:id="@+id/isRichi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -66,7 +68,7 @@
                 android:text="없음" />
 
             <RadioButton
-                android:id="@+id/richi"
+                android:id="@+id/oneRichi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="리치" />
@@ -85,6 +87,7 @@
             android:textSize="25sp" />
 
         <RadioGroup
+            android:id="@+id/prevalentWind"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -118,6 +121,7 @@
             android:textSize="25sp" />
 
         <RadioGroup
+            android:id="@+id/seatWind"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -153,6 +157,7 @@
             />
 
         <RadioGroup
+            android:id="@+id/specialPoints"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ResultActivity">
+    tools:context=".ConfirmationActivity">
 
 
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/majan_tsumo_woman"
+        android:src="@drawable/majan_tsumo_man"
         android:layout_weight="1"
         android:layout_gravity="center"/>
 
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="결과 발표"
+            android:text="결과가 맞나요?"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="25sp" />
@@ -34,16 +34,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="역"
+                android:text="손패"
                 android:textSize="25sp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="탕야오"
+                android:text="통패 작패"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -52,28 +51,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="부수"
+                android:text="화료패"
                 android:textSize="25sp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="기본 부수"
+                android:text="패"
                 android:textSize="20sp" />
-
         </LinearLayout>
 
-
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="우리 한 판 더 해요"
-            android:layout_gravity="center"
-            android:id="@+id/goToHomeBtn"/>
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="후로패"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="패"
+                android:textSize="20sp" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:id="@+id/acceptBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:text="예"/>
+
+            <Button
+                android:id="@+id/declineBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:text="아니요"/>
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

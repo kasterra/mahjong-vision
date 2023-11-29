@@ -26,7 +26,7 @@ class CameraActivity : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
 
         binding.pictureBtn.setOnClickListener{
-            val intent = Intent(this,  SurveyActivity::class.java)
+            val intent = Intent(this,  ConfirmationActivity::class.java)
             startActivity(intent)
         }
     }
