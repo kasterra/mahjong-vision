@@ -21,13 +21,13 @@ def split_hand_binary_search(hand: list, group: int):
                 print(str(idx+1)+"th group")
                 print(val)
                 print("---------------------")
-            return groups
+            return groups, mid
         elif len(groups) < group:
             high = mid - 1
         else:
             low = mid + 1
     print("oh.. that's something wrong. i can't find group")
-    return []
+    return None
 
 # 후로 개수는 입력받아야함
 def split_huro(huro_hand: list, size: int):
@@ -41,7 +41,7 @@ def split_huro(huro_hand: list, size: int):
         print(result)
         return result
     print("some error occur when split huro")
-    return {}
+    return None
 
 def is_valid_chi(hand1, hand2, hand3):
     if hand1[1] == 'z' or hand2[1] == 'z' or hand3[1] == 'z':
