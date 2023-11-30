@@ -49,7 +49,7 @@ def is_valid_chi(hand1, hand2, hand3):
     if hand1[1] != hand2[1] or hand1[1] != hand3[1] or hand2[1] != hand3[1]:
         return False
     hand = sorted([hand1, hand2, hand3])
-    return int(hand1[0])+1 == int(hand2[0]) and int(hand2[0])+1 == int(hand3[0])
+    return int(hand[0][0])+1 == int(hand[1][0]) and int(hand[1][0])+1 == int(hand[2][0])
 
 def all_same(*arg):
     return all(arg[0] == i for i in arg)

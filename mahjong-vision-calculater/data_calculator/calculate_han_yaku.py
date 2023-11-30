@@ -1,34 +1,61 @@
 from mahjong.hand_calculating.hand import HandCalculator
 from mahjong.tile import TilesConverter
 from mahjong.meld import Meld
-import data_calculator.split_data
+from mahjong.hand_calculating.hand_config import HandConfig
+import mahjong.constants
 import numpy as np
 
-# 손패, 도라, 오름패를 입력 받기
-def calculate(hand: list, dora: list, agari: str):
-    # 임시로 북을 여기서 빼보자
-    for idx, val in enumerate(hand):
-        if val['name'] == '4z':
-            del hand[idx]
-            break
-    
-    # 오름 패를 제외한 hand의 크기는 13, 후로가 있을 경우 그룹 2개로 나눠야 함
-    sz = 13
-    group = 2
-    
-    min_dist = abs(np.linalg.norm(np.array(hand[0]['pos']) - np.array(hand[1]['pos'])))
-    for i in range(1, len(hand)):
-        min_dist = min(min_dist, abs(np.linalg.norm(np.array(hand[i-1]['pos']) - np.array(hand[i]['pos']))))
-    s, dist = data_calculator.split_data.split_hand_binary_search(hand, group)
+# api function /check_information
+def get_additonal_information(data):
+    result = {
+        "win_method": True,
+        "ricci": True,
+        "seat_wind": True,
+        "prevalent_wind": True,
+        "chankkang": True,
+        "haitei": True,
+        "rinsynn": True,
+        "aka": 0
+    }
+    if len(data['hand']) != 13:
+        result['ricci'] = False
+    if len(data['huro']['ankkang']) == 0 and len(data['huro']['minkkang']) == 0:
+        result['rinsynn'] = False
+    if data['win'][1] != 'z' and data['win'][0] == '5':
+        result['aka'] += 1
+    for i in data['hand']:
+        if i[1] != 'z' and i[0] == '5':
+            result['aka'] += 1
+    return result
 
-    huro = []
-    is_menzen = False
-    if min_dist * 1.5 > dist:
-        is_menzen = True
-    else:
-        huro_size = (sz - len(s[0])) // 3
-        huro = data_calculator.split_data.split_huro(s[-1], huro_size)
+# api function /calculate
+def calculate(data, information):
+    handConfig = HandConfig()
+    if information['win_method'] == "tsumo":
+        handConfig.is_tsumo = True
     
+    if information['riicci'] == 1:
+        handConfig.is_riichi = True
+    elif information['riichi'] == 2:
+        handConfig.is_daburu_riichi = True
+
+    str_to_constant = {
+        "E": mahjong.constants.EAST,
+        "S": mahjong.constants.SOUTH,
+        "W": mahjong.constants.WEST,
+        "N": mahjong.constants.NORTH
+    }
+
+    handConfig.player_wind = str_to_constant[information['seat_wind']]
+    handConfig.round_wind = str_to_constant[information['prevalent_wind']]
+    
+    handConfig.is_chankan = information['chankkang']
+    if handConfig.is_tsumo:
+        handConfig.is_haitei = information['haitei']
+    else:
+        handConfig.is_houtei = information['haitei']
+    
+    handConfig.is_rinshan = information['rinshan']
     return HandCalculator.estimate_hand_value()
 
 def hand_to_136_array(hand):
