@@ -8,7 +8,6 @@
     android:gravity="center"
     tools:context=".ConfirmationActivity">
 
-
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -38,13 +37,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="손패"
+                android:gravity="center"
                 android:textSize="25sp" />
-            <TextView
+            <LinearLayout
+                android:id="@+id/sonPai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="통패 작패"
-                android:textSize="20sp" />
-
+                android:gravity="center"
+                android:orientation="horizontal">
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -55,12 +56,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="화료패"
+                android:gravity="center"
                 android:textSize="25sp" />
-            <TextView
+            <LinearLayout
+                android:id="@+id/tenPai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="패"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:src="@drawable/majan4_sufonpai_east"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"/>
+                <ImageView
+                    android:src="@drawable/majan5_sangenpai2"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"/>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -71,13 +83,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="후로패"
+                android:gravity="center"
                 android:textSize="25sp" />
-            <TextView
+            <LinearLayout
+                android:id="@+id/huroPai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="패"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:src="@drawable/majan2_pinzu5"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"/>
+                <ImageView
+                    android:src="@drawable/majan2_pinzu6"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"/>
+            </LinearLayout>
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

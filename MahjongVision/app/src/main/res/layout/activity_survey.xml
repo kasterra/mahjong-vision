@@ -20,6 +20,7 @@
         android:orientation="vertical"
         android:gravity="center">
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -182,6 +183,35 @@
                 android:text="하저/해저" />
         </RadioGroup>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="적도라"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/fiveMan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5만" />
+            <CheckBox
+                android:id="@+id/fiveTong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5통" />
+            <CheckBox
+                android:id="@+id/fiveSac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5삭" />
+        </LinearLayout>
 
     </LinearLayout>
     <Button

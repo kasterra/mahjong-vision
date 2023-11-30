@@ -24,6 +24,11 @@ class SurveyActivity : AppCompatActivity() {
             val selectedSeatWindId = binding.seatWind.checkedRadioButtonId
             val selectedSpecialPointsId = binding.specialPoints.checkedRadioButtonId
 
+            //목업 체크박스 데이터
+            val selectedFiveTong = binding.fiveTong.isChecked
+            val selectedFiveMan = binding.fiveMan.isChecked
+            val selectedFiveSac = binding.fiveSac.isChecked
+
             //예외 처리, RadioButton이 하나라도 선택 안 되어 있으면 진행하지 않음
             if (selectedWinningMethodId == -1 || selectedRichiId == -1 ||
                 selectedPrevalentWindId == -1 || selectedSeatWindId == -1 || selectedSpecialPointsId == -1
