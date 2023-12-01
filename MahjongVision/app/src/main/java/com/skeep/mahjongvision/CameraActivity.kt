@@ -14,6 +14,8 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import com.android.volley.Request
+import com.android.volley.toolbox.Volley
 import com.google.common.util.concurrent.ListenableFuture
 import com.skeep.mahjongvision.databinding.ActivityCameraBinding
 import java.util.concurrent.ExecutorService
@@ -30,6 +32,10 @@ class CameraActivity : AppCompatActivity() {
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://175.45.194.234:8000/image_to_data"
+
+
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         cameraProviderFuture.addListener(Runnable {
             val cameraProvider = cameraProviderFuture.get()
@@ -38,20 +44,28 @@ class CameraActivity : AppCompatActivity() {
 
         //cameraExecutor = Executors.newSingleThreadExecutor()
 
+        val volleyMultipartRequest = VolleyMultipartRequest(
+            Request.Method.POST,
+            url,
+            {
+                Log.d("dogdriip", "success")
+
+                Toast.makeText(this@CameraActivity, "성공!", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
+            },{
+                Log.d("dogdriip", "failed")
+            });
+
         binding.pictureBtn.setOnClickListener{
             val intent = Intent(this,  ConfirmationActivity::class.java)
-
+            Toast.makeText(this, "사진이 저장될 때까지 기다려 주세요.", Toast.LENGTH_SHORT).show()
             imageCapture?.takePicture(ContextCompat.getMainExecutor(this),
                 object : ImageCapture.OnImageCapturedCallback() {
                     override fun onCaptureSuccess(image: ImageProxy) {
-                        Toast.makeText(this@CameraActivity, "Take picture success", Toast.LENGTH_SHORT).show()
-                        //intent.putExtra("Img", image)
                         Log.d("Image", image.toString())
 
-                        //val imageView = ImageView(this@CameraActivity)
-                        //imageView.setImageBitmap(image.toBitmap())
-                        //binding.root.addView(imageView)
-                        startActivity(intent)
+                        queue.add(volleyMultipartRequest)
+
                     }
                 })
         }

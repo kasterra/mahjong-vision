@@ -27,10 +27,12 @@ class ConfirmationActivity : AppCompatActivity() {
         val binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val url = "https://jsonplaceholder.typicode.com/users" // 주소
+
         val queue = Volley.newRequestQueue(this)
         val stringRequest = StringRequest(
             Request.Method.GET,
-            "https://jsonplaceholder.typicode.com/users", //test api website
+            url,
             {
                 Log.d("get", it)
                 Toast.makeText(this, "get", Toast.LENGTH_SHORT).show()

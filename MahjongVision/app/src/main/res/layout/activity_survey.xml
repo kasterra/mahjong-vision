@@ -32,8 +32,8 @@
             android:id="@+id/winningMethod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/tsumo"
@@ -181,6 +181,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="하저/해저" />
+
+            <RadioButton
+                android:id="@+id/special_No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="없음" />
         </RadioGroup>
 
         <TextView
@@ -211,6 +217,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5삭" />
+            <CheckBox
+                android:id="@+id/ippatsu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일발" />
         </LinearLayout>
 
     </LinearLayout>
