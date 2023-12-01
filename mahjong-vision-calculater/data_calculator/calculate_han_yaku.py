@@ -38,17 +38,28 @@ def calculate(data, information):
     huro = huro_to_meld_array(data['huro'], hand)
     hand.sort()
     calculator = HandCalculator()
-    result = calculator.estimate_hand_value(tiles=hand,melds=huro,dora_indicators=dora,win_tile=win_tile,config=config)
-
+    cal = calculator.estimate_hand_value(tiles=hand,melds=huro,dora_indicators=dora,win_tile=win_tile,config=config)
     print("input hand")
     print(data)
     print(information)
     print("calculated hand value")
-    return {
-        "yaku": result.yaku,
-        "fu": result.fu_details,
-        "score": [result.cost['main'], result.cost['additional']]
+    print(cal)
+    if cal.error != None:
+        return {
+            "yaku": "chonbo",
+        }
+    result = {
+        "yaku": cal.yaku,
+        "fu": cal.fu_details,
     }
+    for i in cal.fu_details:
+        result['fu'].append(i)
+    if information['win_method'] == "ron":
+        result['score'] = result.cost['main']
+    else:
+        result['score'] = [result.cost['main'], result.cost['additional']]
+
+    return result
 
 def information_to_hand_config(information):
     handConfig = HandConfig()
@@ -97,11 +108,14 @@ def hand_to_136_array(hand):
 
 def huro_to_meld_array(huro, hand):
     result = []
-    converter = {'chi': Meld.CHI, 'pong': Meld.PON, 'ankkang': Meld.SHOUMINKAN, 'minkkang': Meld.KAN}
+    converter = {'chi': Meld.CHI, 'pong': Meld.PON, 'ankkang': Meld.KAN, 'minkkang': Meld.KAN}
     for i in converter:
         for j in huro[i]:
             ary = hand_to_136_array(j)
             for k in ary:
                 hand.append(k)
-            result.append(Meld(meld_type=converter[i], tiles=hand_to_136_array(j)))
+            if i == 'ankkang':
+                result.append(Meld(meld_type=converter[i], tiles=hand_to_136_array(j), opened=False))
+            else:
+                result.append(Meld(meld_type=converter[i], tiles=hand_to_136_array(j)))
     return result
