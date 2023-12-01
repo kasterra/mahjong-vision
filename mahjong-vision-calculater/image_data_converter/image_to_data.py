@@ -7,12 +7,12 @@ from PIL import Image
 
 def convert_to_split_data(img: Image):
     # Load a pretrained YOLOv8n model
-    model = YOLO('model.pt')
+    model = YOLO('/Users/skeep/mahjong-vision/mahjong-vision-calculater/model.pt')
 
     x, y = img.size
 
     # Run inference on the source
-    predicts = model.predict(img, boxes=True, imgsz=(x, y))  # list of Results objects
+    predicts = model.predict(img, boxes=True, conf=0.7)  # list of Results objects
 
     result = []
     for r in predicts:
@@ -52,6 +52,7 @@ def convert_to_dict(img: Image):
     win, dora = win_dora_split[0], win_dora_split[1]
 
     hand_huro_split, dist = split_hand_binary_search(hand_huro_data, group)
+    min_dist = 1e15
     for i in range(1, len(hand_huro_data)):
         min_dist = min(min_dist, abs(np.linalg.norm(np.array(hand_huro_data[i-1]['pos']) - np.array(hand_huro_data[i]['pos']))))
 

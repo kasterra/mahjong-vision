@@ -30,11 +30,32 @@ def get_additonal_information(data):
 
 # api function /calculate
 def calculate(data, information):
+    config = information_to_hand_config(information)
+    win_tile = hand_to_136_array([data['win']])[0]
+    dora = hand_to_136_array(data['dora'])
+    hand = hand_to_136_array(data['hand'])
+    hand.append(win_tile)
+    huro = huro_to_meld_array(data['huro'], hand)
+    hand.sort()
+    calculator = HandCalculator()
+    result = calculator.estimate_hand_value(tiles=hand,melds=huro,dora_indicators=dora,win_tile=win_tile,config=config)
+
+    print("input hand")
+    print(data)
+    print(information)
+    print("calculated hand value")
+    return {
+        "yaku": result.yaku,
+        "fu": result.fu_details,
+        "score": [result.cost['main'], result.cost['additional']]
+    }
+
+def information_to_hand_config(information):
     handConfig = HandConfig()
     if information['win_method'] == "tsumo":
         handConfig.is_tsumo = True
     
-    if information['riicci'] == 1:
+    if information['riichi'] == 1:
         handConfig.is_riichi = True
     elif information['riichi'] == 2:
         handConfig.is_daburu_riichi = True
@@ -56,7 +77,7 @@ def calculate(data, information):
         handConfig.is_houtei = information['haitei']
     
     handConfig.is_rinshan = information['rinshan']
-    return HandCalculator.estimate_hand_value()
+    return handConfig
 
 def hand_to_136_array(hand):
     man = ''
@@ -64,19 +85,23 @@ def hand_to_136_array(hand):
     sou = ''
     honors = ''
     for i in hand:
-        if i['name'][1] == 'm':
-            man += i['name'][0]
-        elif i['name'][1] == 's':
-            sou += i['name'][0]
-        elif i['name'][1] == 'p':
-            pin += i['name'][0]
+        if i[1] == 'm':
+            man += i[0]
+        elif i[1] == 's':
+            sou += i[0]
+        elif i[1] == 'p':
+            pin += i[0]
         else:
-            honors += i['name'][0]
+            honors += i[0]
     return TilesConverter.string_to_136_array(sou=sou, man=man, pin=pin, honors=honors)
 
-def huro_to_meld_array(huro):
+def huro_to_meld_array(huro, hand):
     result = []
     converter = {'chi': Meld.CHI, 'pong': Meld.PON, 'ankkang': Meld.SHOUMINKAN, 'minkkang': Meld.KAN}
     for i in converter:
-        for j in result[converter]:
-            result.append(Meld(meld_type=converter[j], tiles=)
+        for j in huro[i]:
+            ary = hand_to_136_array(j)
+            for k in ary:
+                hand.append(k)
+            result.append(Meld(meld_type=converter[i], tiles=hand_to_136_array(j)))
+    return result
