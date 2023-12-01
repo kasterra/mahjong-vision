@@ -7,7 +7,7 @@ from PIL import Image
 
 def convert_to_split_data(img: Image):
     # Load a pretrained YOLOv8n model
-    model = YOLO('/Users/skeep/mahjong-vision/mahjong-vision-calculater/model.pt')
+    model = YOLO('model.pt')
 
     x, y = img.size
 

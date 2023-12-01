@@ -7,7 +7,7 @@ from PIL import Image
 if __name__ == "__main__":
     print("convert image to data")
     # TODO: 이 부분은 데이터를 동적으로 넣어줘야 함
-    img = Image.open('/Users/skeep/mahjong-vision/mahjong-vision-calculater/example.png')
+    img = Image.open('example.png')
     d = convert_to_dict(img)
     print(d)
     x = get_additonal_information(d)
