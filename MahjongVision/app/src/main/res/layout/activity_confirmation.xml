@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".ConfirmationActivity">
 
     <ImageView
@@ -29,24 +28,23 @@
             android:textAlignment="center"
             android:textSize="25sp" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="손패"
-                android:gravity="center"
-                android:textSize="25sp" />
-            <LinearLayout
-                android:id="@+id/sonPai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-            </LinearLayout>
-        </LinearLayout>
+            android:text="손패"
+            android:gravity="center"
+            android:textSize="25sp" />
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/handPai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                </LinearLayout>
+        </HorizontalScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,17 +57,13 @@
                 android:gravity="center"
                 android:textSize="25sp" />
             <LinearLayout
-                android:id="@+id/tenPai"
+                android:id="@+id/winPai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
                 <ImageView
                     android:src="@drawable/majan4_sufonpai_east"
-                    android:layout_width="60dp"
-                    android:layout_height="80dp"/>
-                <ImageView
-                    android:src="@drawable/majan5_sangenpai2"
                     android:layout_width="60dp"
                     android:layout_height="80dp"/>
             </LinearLayout>
@@ -100,6 +94,29 @@
                     android:layout_width="60dp"
                     android:layout_height="80dp"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="도라패"
+                    android:gravity="center"
+                    android:textSize="25sp" />
+                <LinearLayout
+                    android:id="@+id/doraPai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:src="@drawable/majan3_souzu2"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"/>
+                </LinearLayout>
+
         </LinearLayout>
 
 
@@ -127,5 +144,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/testbtn"
             android:text="test"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
