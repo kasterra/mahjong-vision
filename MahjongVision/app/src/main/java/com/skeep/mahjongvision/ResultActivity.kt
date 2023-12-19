@@ -11,6 +11,8 @@ class ResultActivity : AppCompatActivity() {
         val binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         binding.goToHomeBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

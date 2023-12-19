@@ -55,7 +55,7 @@ class ConfirmationActivity : AppCompatActivity() {
     )
 
     lateinit var handPais:List<String>
-    lateinit var winPais:String
+    lateinit var winPai:String
     lateinit var huroPais:List<String>
     lateinit var doraPais:List<String>
 
@@ -89,8 +89,11 @@ class ConfirmationActivity : AppCompatActivity() {
 
         //목업 데이터
         handPais = listOf("1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m")
+        winPai = "1z"
+        huroPais = listOf("1p", "2p", "3p", "4p")
+        doraPais = listOf("1s", "2s", "3s", "4s")
 
-        //패 넣는 부분 목업 코드
+        //손패 넣기
         for (pai in handPais) {
             val paiview = ImageView(this)
             val resource = paiResourceMap[pai]
@@ -104,6 +107,41 @@ class ConfirmationActivity : AppCompatActivity() {
             }
             // 이미지뷰를 컨테이너에 추가
             binding.handPai.addView(paiview)
+        }
+
+        //화료패 넣기
+        ImageView(this).setImageResource(paiResourceMap[winPai]!!)
+
+        //후로패 넣기
+        for (pai in huroPais) {
+            val paiview = ImageView(this)
+            val resource = paiResourceMap[pai]
+
+            paiview.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+            )
+            if (resource != null) {
+                paiview.setImageResource(resource)
+            }
+            // 이미지뷰를 컨테이너에 추가
+            binding.huroPai.addView(paiview)
+        }
+
+        //도라패 넣기
+        for (pai in doraPais) {
+            val paiview = ImageView(this)
+            val resource = paiResourceMap[pai]
+
+            paiview.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+            )
+            if (resource != null) {
+                paiview.setImageResource(resource)
+            }
+            // 이미지뷰를 컨테이너에 추가
+            binding.doraPai.addView(paiview)
         }
 
         //맞아 틀려 버튼
