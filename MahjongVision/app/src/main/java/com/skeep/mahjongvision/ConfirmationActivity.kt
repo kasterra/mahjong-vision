@@ -110,7 +110,13 @@ class ConfirmationActivity : AppCompatActivity() {
         }
 
         //화료패 넣기
-        ImageView(this).setImageResource(paiResourceMap[winPai]!!)
+        binding.winPai.addView(ImageView(this).apply { 
+            this.setImageResource(paiResourceMap[winPai]!!)
+            //this.layoutParams{ 여기서 이미지 사이즈 조절하면 될 듯 }
+        })
+        //paiResourceMap[winPai]?.let { ImageView(this).setImageResource(it) }
+        //paiResourceMap[winPai]?.let { ImageView(this).setImageResource(it) }
+        //ImageView(this).setImageResource(paiResourceMap[winPai]!!)
 
         //후로패 넣기
         for (pai in huroPais) {

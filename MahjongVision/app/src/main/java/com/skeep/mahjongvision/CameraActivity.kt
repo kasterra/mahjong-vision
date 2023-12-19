@@ -48,16 +48,19 @@ class CameraActivity : AppCompatActivity() {
             Request.Method.POST,
             url,
             {
+                val intent = Intent(this,  ConfirmationActivity::class.java)
                 Log.d("dogdriip", "success")
 
                 Toast.makeText(this@CameraActivity, "성공!", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             },{
+                val intent = Intent(this,  ConfirmationActivity::class.java)
                 Log.d("dogdriip", "failed")
+                Toast.makeText(this@CameraActivity, "실패...", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
             });
 
         binding.pictureBtn.setOnClickListener{
-            val intent = Intent(this,  ConfirmationActivity::class.java)
             Toast.makeText(this, "사진이 저장될 때까지 기다려 주세요.", Toast.LENGTH_SHORT).show()
             imageCapture?.takePicture(ContextCompat.getMainExecutor(this),
                 object : ImageCapture.OnImageCapturedCallback() {
