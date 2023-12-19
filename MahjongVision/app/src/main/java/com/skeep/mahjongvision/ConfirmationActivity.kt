@@ -90,8 +90,8 @@ class ConfirmationActivity : AppCompatActivity() {
         //목업 데이터
         handPais = listOf("1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m")
         winPai = "1z"
-        huroPais = listOf("1p", "2p", "3p", "4p")
-        doraPais = listOf("1s", "2s", "3s", "4s")
+        huroPais = listOf("1p", "2p", "3p", "4p", "5p", "6p", "7p")
+        doraPais = listOf("1s", "2s", "3s", "4s"    )
 
         //손패 넣기
         for (pai in handPais) {
@@ -112,7 +112,8 @@ class ConfirmationActivity : AppCompatActivity() {
         //화료패 넣기
         binding.winPai.addView(ImageView(this).apply { 
             this.setImageResource(paiResourceMap[winPai]!!)
-            //this.layoutParams{ 여기서 이미지 사이즈 조절하면 될 듯 }
+            this.adjustViewBounds = true
+            this.maxHeight = 300
         })
         //paiResourceMap[winPai]?.let { ImageView(this).setImageResource(it) }
         //paiResourceMap[winPai]?.let { ImageView(this).setImageResource(it) }
