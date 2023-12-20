@@ -61,6 +61,10 @@ class ConfirmationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //api string data
+        val data = intent.getStringExtra("message")
+
         val binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

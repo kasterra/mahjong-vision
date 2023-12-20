@@ -26,6 +26,8 @@ import com.skeep.mahjongvision.databinding.ActivityCameraBinding
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONObject
+import org.json.JSONTokener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -72,6 +74,13 @@ class CameraActivity : AppCompatActivity() {
                                 call: Call<String>,
                                 response: Response<String>
                             ) {
+                                if (!response.isSuccessful) {
+                                    Toast.makeText(this@CameraActivity, "사진을 다시 찍어주세요.", Toast.LENGTH_SHORT).show()
+                                    return
+                                }
+                                val result = response.body()!!
+                                val intent = Intent(this@CameraActivity, ConfirmationActivity::class.java)
+                                intent.putExtra("message", result)
                                 Log.d("request", response.body()!!)
                             }
                             override fun onFailure(call: Call<String>, t: Throwable) {
