@@ -2,4 +2,177 @@
     <string name="app_name">MahjongVision</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Riichi">
+        <item>리치</item>
+        <item>[멘젠필수] 후로 하지 않고 1000점을 걸고 화료</item>
+    </string-array>
+    <string-array name="Tsumo">
+        <item>멘젠쯔모</item>
+        <item>멘젠인 상태에서 쯔모로 오름</item>
+    </string-array>
+    <string-array name="Ippatsu">
+        <item>일발</item>
+        <item>리치를 걸고 순정 1순내로 화료</item>
+    </string-array>
+    <string-array name="Rinshan">
+        <item>영상개화</item>
+        <item>깡을 할 때 쯔모한 영상패로 화료</item>
+    </string-array>
+    <string-array name="Chankan">
+        <item>창깡</item>
+        <item>타인의 가깡을 한 패가 자신의 완성패일 경우</item>
+    </string-array>
+    <string-array name="Haitei">
+        <item>해저로월</item>
+        <item>패산의 마지막 패를 쯔모해서 오름</item>
+    </string-array>
+    <string-array name="Houtei">
+        <item>하저로어</item>
+        <item>마지막 버림패로 론을 하여 오름</item>
+    </string-array>
+    <string-array name="Pinfu">
+        <item>핑후</item>
+        <item>[몐젠필수] 추가 부수가 붙지 않게 하여 화료</item>
+    </string-array>
+    <string-array name="Iipeiko">
+        <item>이페코</item>
+        <item>[멘젠필수] 완전히 동일한 슌쯔가 두개 있으면 성립</item>
+    </string-array>
+    <string-array name="Haku">
+        <item>삼원패 : 백</item>
+        <item>백패를 커쯔나 깡쯔로 모음</item>
+    </string-array>
+    <string-array name="Hatsu">
+        <item>삼원패 : 발</item>
+        <item>발패를 커쯔나 깡쯔로 모음</item>
+    </string-array>
+    <string-array name="Chun">
+        <item>삼원패 : 중</item>
+        <item>중패를 커쯔나 깡쯔로 모음</item>
+    </string-array>
+    <!--TODO: 자풍패, 장풍패 -->
+    <string-array name="Tanyao">
+        <item>탕야오</item>
+        <item>요구패가 하나도 포함되어 있지 않은 상태로 화료</item>
+    </string-array>
+    <string-array name="Dora">
+        <item>도라</item>
+        <item>[보조 역] 도라표시패의 다음 패를 보유</item>
+    </string-array>
+    <string-array name="Akadora">
+        <item>적도라</item>
+        <item>[보조 역] 붉은색의 적도라 패를 포함해 화료</item>
+    </string-array>
+    <string-array name="DaburuRiichi">
+        <item>더블리치</item>
+        <item>[멘젠필수] 순정 1순에 첫 쯔모 후 처음 버리는 패로 바로 리치</item>
+    </string-array>
+    <string-array name="Chiitoitsu">
+        <item>치또이쯔</item>
+        <item>14개의 패를 7쌍의 머리로 모은 경우 성립</item>
+    </string-array>
+    <string-array name="Sanshoku">
+        <item>삼색동순</item>
+        <item>동일한 숫자 묶음의 슌쯔를 세 종류의 수패로 하나씩 만들면 성립</item>
+    </string-array>
+    <string-array name="Ittsu">
+        <item>일기통관</item>
+        <item>한 종류의 수패를 1-9 까지 전부 모아서 123-456-789로 슌쯔 3개를 만들면 성립</item>
+    </string-array>
+    <string-array name="Toitoi">
+        <item>또이또이</item>
+        <item>모든 몸통을 커쯔나 깡쯔로 만들면 성립</item>
+    </string-array>
+    <string-array name="Sanankou">
+        <item>산안커</item>
+        <item>안커 3개를 만들어 화료</item>
+    </string-array>
+    <string-array name="SanshokuDoukou">
+        <item>삼색동각</item>
+        <item>동일한 숫자의 커쯔(깡쯔)를 세 종류의 수패로 하나씩 만들면 성립</item>
+    </string-array>
+    <string-array name="SanKantsu">
+        <item>산깡쯔</item>
+        <item>3개의 깡쯔를 만들면 성립</item>
+    </string-array>
+    <string-array name="Chantai">
+        <item>찬타</item>
+        <item>모든 패가 요구패(노두패)는 아니면서 모든 몸통과 머리에 각각 적어도 1개 이상의 요구패를 포함</item>
+    </string-array>
+    <string-array name="Honroto">
+        <item>혼노두</item>
+        <item>모든 손패를 요구패로 만들고, 자패가 있어야 함</item>
+    </string-array>
+    <string-array name="Shosangen">
+        <item>소삼원</item>
+        <item>삼원패 중 2종류를 몸통으로. 1종류를 머리로 만들면 성립</item>
+    </string-array>
+    <string-array name="Ryanpeikou">
+        <item>량페코</item>
+        <item>[멘젠필수] 이페코를 2개 만들면 성립</item>
+    </string-array>
+    <string-array name="Junchan">
+        <item>준찬타</item>
+        <item>모든 몸통과 머리에 자패 없이 노두패가 들어가는 형태</item>
+    </string-array>
+    <string-array name="Honitsu">
+        <item>혼일색</item>
+        <item>한 종류의 수패와 자패만으로 역을 만듦</item>
+    </string-array>
+    <string-array name="Chinitsu">
+        <item>청일색</item>
+        <item>한 종류의 수패로만 이루어진 역</item>
+    </string-array>
+    <string-array name="Suuankou">
+        <item>사암각</item>
+        <item>안커 4개로 이루어진 역</item>
+    </string-array>
+    <string-array name="SuuankouTanki">
+        <item>사암각단기</item>
+        <item>안커 4개가 이미 만들어진 상태에서 단기대기로 화료</item>
+    </string-array>
+    <string-array name="KokushiMusou">
+        <item>국사무쌍</item>
+        <item>13종의 요구패를 모두 모음</item>
+    </string-array>
+    <string-array name="DaburuKokushiMusou">
+        <item>국사무쌍13면팅</item>
+        <item>이미 13종의 패를 다 모은 상태에서 13면 대기로 화료</item>
+    </string-array>
+    <string-array name="ChuurenPoutou">
+        <item>구련보등</item>
+        <item>한 종류의 수패로 1112345678999에 1~9 패중 하나만 있으면 인정</item>
+    </string-array>
+    <string-array name="DaburuChuurenPoutou">
+        <item>순정구련보등</item>
+        <item>1112345678999 형태, 즉 9면대기로 화료</item>
+    </string-array>
+    <string-array name="Ryuuiisou">
+        <item>녹일색</item>
+        <item>삭수 2,3,4,6,8 그리고 발패만을 이용하여 화료</item>
+    </string-array>
+    <string-array name="Tsuuiisou">
+        <item>자일색</item>
+        <item>자패로만 만들면 되는 역</item>
+    </string-array>
+    <string-array name="Chinroutou">
+        <item>청노두</item>
+        <item>노두패(1,9)로만 만들면 되는 역</item>
+    </string-array>
+    <string-array name="Daisangen">
+        <item>대삼원</item>
+        <item>삼원패 3종류를 모두 몸통으로</item>
+    </string-array>
+    <string-array name="Shousuushii">
+        <item>소사희</item>
+        <item>풍패중 아무거나 3종류로 커쯔(깡쯔)를 만들고 나머지를 또이쯔로</item>
+    </string-array>
+    <string-array name="Daisuushii">
+        <item>대사희</item>
+        <item>풍패 4종류를 모두 멘쯔로 만들어서 화료</item>
+    </string-array>
+    <string-array name="Suukantsu">
+        <item>사공자</item>
+        <item>깡을 4번치고 화료</item>
+    </string-array>
 </resources>
