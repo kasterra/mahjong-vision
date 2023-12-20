@@ -30,6 +30,9 @@ def get_additonal_information(data):
 
 # api function /calculate
 def calculate(data, information):
+    menzen = False
+    if len(data['huro']['minkkang']) + len(data['huro']['chi']) + len(data['huro']['pong']) == 0:
+        menzen = True
     config = information_to_hand_config(information)
     win_tile = hand_to_136_array([data['win']])[0]
     dora = hand_to_136_array(data['dora'])
@@ -49,16 +52,19 @@ def calculate(data, information):
             "yaku": "chonbo",
         }
     result = {
-        "yaku": cal.yaku,
-        "fu": cal.fu_details,
+        "yaku": [],
+        "fu": [],
     }
+    for i in cal.yaku:
+        result['yaku'].append({'name': i.name.replace(' ', ''), 'han': i.han_closed if menzen else i.han_open })
     for i in cal.fu_details:
-        result['fu'].append(i)
+        result['fu'].append(i['reason'])
     if information['win_method'] == "ron":
-        result['score'] = result.cost['main']
+        result['score'] = cal.cost['main']
     else:
-        result['score'] = [result.cost['main'], result.cost['additional']]
-
+        result['score'] = [cal.cost['main'], cal.cost['additional']]
+    print('result')
+    print(result)
     return result
 
 def information_to_hand_config(information):
