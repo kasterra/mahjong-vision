@@ -74,28 +74,7 @@ class ConfirmationActivity : AppCompatActivity() {
         val binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val url = "https://jsonplaceholder.typicode.com/users" // 주소
 
-        val queue = Volley.newRequestQueue(this)
-        val stringRequest = StringRequest(
-            Request.Method.GET,
-            url,
-            {
-                Log.d("get", it)
-                Toast.makeText(this, "get", Toast.LENGTH_SHORT).show()
-                //val intent= Intent(this, SurveyActivity::class.java)
-                //startActivity(intent)
-            },
-            { error->
-                Log.d("get", "error $error")
-            }
-        )
-        //GET
-
-        //queue.add(stringRequest)
-        binding.testbtn.setOnClickListener{
-            queue.add(stringRequest)
-        }
 
         val doraJSON = json.getJSONArray("dora")
         val huro = json.getJSONObject("huro")

@@ -46,8 +46,8 @@ class SurveyActivity : AppCompatActivity() {
             else
             {
                 //정보 정리해서 서버로 던지기
-                //val stringData = intent.getStringExtra("message")
-                val stringData = "{\"win\":\"5s\",\"dora\":[\"6p\",\"7s\",\"1p\",\"8p\"],\"hand\":[\"2m\",\"3m\",\"4m\",\"7m\",\"8m\",\"9m\",\"5p\",\"5p\",\"3s\",\"4s\"],\"huro\":{\"chi\":[],\"pong\":[],\"ankkang\":[[\"8s\",\"8s\",\"8s\",\"8s\"]],\"minkkang\":[]}}"
+                val stringData = intent.getStringExtra("message")
+                //val stringData = "{\"win\":\"5s\",\"dora\":[\"6p\",\"7s\",\"1p\",\"8p\"],\"hand\":[\"2m\",\"3m\",\"4m\",\"7m\",\"8m\",\"9m\",\"5p\",\"5p\",\"3s\",\"4s\"],\"huro\":{\"chi\":[],\"pong\":[],\"ankkang\":[[\"8s\",\"8s\",\"8s\",\"8s\"]],\"minkkang\":[]}}"
                 val surveyData = JSONObject()
                 if(selectedWinningMethodId == binding.tsumo.id) {
                     surveyData.put("win_method", "tsumo")
@@ -149,16 +149,15 @@ class SurveyActivity : AppCompatActivity() {
                             return
                         }
                         Log.d("response data", response.body().toString())
+                        val intent = Intent(this@SurveyActivity, ResultActivity::class.java)
+                        intent.putExtra("message", response.toString())
+                        startActivity(intent)
                     }
 
                     override fun onFailure(call: Call<String>, t: Throwable) {
                         TODO("Not yet implemented")
                     }
                 })
-                //Log.d("intent data",jsonData.toString())
-                //화면 전환
-                //val intent = Intent(this, ResultActivity::class.java)
-                //startActivity(intent)
             }
 
         }
