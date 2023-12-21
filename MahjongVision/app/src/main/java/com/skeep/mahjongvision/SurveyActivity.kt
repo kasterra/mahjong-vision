@@ -7,8 +7,14 @@ import android.util.Log
 import android.widget.Toast
 import com.skeep.mahjongvision.databinding.ActivitySurveyBinding
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class SurveyActivity : AppCompatActivity() {
+
+    private val retrofit = RetrofitInstance.getInstance().create(API::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySurveyBinding.inflate(layoutInflater)
@@ -133,10 +139,26 @@ class SurveyActivity : AppCompatActivity() {
                 jsonData.putOpt("data", JSONObject(stringData))
                 jsonData.putOpt("information", surveyData)
 
-                Log.d("intent data",jsonData.toString())
+
+                Log.d("JsonData", jsonData.toString())
+                retrofit.calculate(jsonData.toString()).enqueue(object : Callback<String> {
+                    override fun onResponse(call: Call<String>, response: Response<String>) {
+                        if(!response.isSuccessful) {
+                            Toast.makeText(this@SurveyActivity, "통신 에러", Toast.LENGTH_SHORT).show()
+                            Log.d("isSuccessful", response.toString())
+                            return
+                        }
+                        Log.d("response data", response.body().toString())
+                    }
+
+                    override fun onFailure(call: Call<String>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+                })
+                //Log.d("intent data",jsonData.toString())
                 //화면 전환
-                val intent = Intent(this, ResultActivity::class.java)
-                startActivity(intent)
+                //val intent = Intent(this, ResultActivity::class.java)
+                //startActivity(intent)
             }
 
         }
