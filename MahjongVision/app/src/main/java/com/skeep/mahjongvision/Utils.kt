@@ -5,6 +5,7 @@ import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.ViewGroup.LayoutParams
+import org.json.JSONArray
 
 fun mapData(context:Context, yakuName:String): Array<String> {
     val arr =  when (yakuName){
@@ -127,4 +128,35 @@ fun createDetailRow(
     mainLayout.addView(scoreTextView)
 
     return mainLayout
+}
+
+fun scoreArrToResult(scoreArr:Array<String>,isTsumo:Boolean): String {
+    var resultStr:String = "";
+    val isOyaTsumo = if(scoreArr.size == 2) scoreArr[0] == scoreArr[1] else false;
+    if(scoreArr.size == 1){
+        resultStr = "방총자에게서 ${scoreArr[0]}점"
+    }
+    else{
+        resultStr = if(isOyaTsumo) "${scoreArr[0]} ALL"
+            else "오야${scoreArr[0]}점, 자${scoreArr[1]}점"
+    }
+    return resultStr;
+}
+
+fun JSONArrayContains(jsonArray:JSONArray, toFind: String): Boolean {
+    for (i in 0 until jsonArray.length()) {
+        val item = jsonArray.getString(i)
+
+        if(item == toFind) return true;
+    }
+    return false;
+}
+
+fun JSONArrayToNative(jsonArray:JSONArray): Array<String> {
+    val ret = Array<String>(jsonArray.length()){""};
+    for (i in 0 until jsonArray.length()) {
+        val item = jsonArray.getString(i)
+        ret[i] = item;
+    }
+    return ret;
 }

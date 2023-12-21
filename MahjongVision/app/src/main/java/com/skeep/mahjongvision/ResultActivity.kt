@@ -10,7 +10,7 @@ import org.json.JSONObject
 
 
 class ResultActivity : AppCompatActivity() {
-    private val IS_MOCK = false
+    private val IS_MOCK = true
     private val MOCK_DATA =
         "{\"yaku\":[{\"name\":\"MenzenTsumo\",\"han\":1},{\"name\":\"Dora\",\"han\":4}],\"fu\":[\"base\",\"closed_kan\",\"tsumo\"],\"score\":[4000,2000]}"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +24,9 @@ class ResultActivity : AppCompatActivity() {
         val yakuArray = jsonObject.getJSONArray("yaku")
         val fuArray = jsonObject.getJSONArray("fu")
         val scoreArray = jsonObject.getJSONArray("score")
+        
+        var hans = 0
+        var fus = 0
 
         for(i in 0 until yakuArray.length()){
             val yakuObj = yakuArray.getJSONObject(i)
@@ -33,6 +36,9 @@ class ResultActivity : AppCompatActivity() {
             val (yakuName, yakuDescription) = mapData(this, objYakuName)
 
             val hanRow = createDetailRow(this, yakuName,yakuDescription,yakuHan)
+            
+            hans += yakuHan.toInt()
+            
             binding.yakulist.addView(hanRow)
         }
 
@@ -42,10 +48,18 @@ class ResultActivity : AppCompatActivity() {
             val (fuName, fuDescription, fuScore) = mapData(this, fuItem)
 
             val fuRow = createDetailRow(this, fuName, fuDescription, fuScore)
+            
+            fus += fuScore.toInt()
+            
             binding.fulist.addView(fuRow)
         }
-
-
+        
+        fus = kotlin.math.round(fus/10.0).toInt() * 10
+        
+        binding.hanAndFu.text = "${hans}판 ${fus}부"
+        
+        binding.score.text = scoreArrToResult(JSONArrayToNative(scoreArray),
+            JSONArrayContains(fuArray,"tsumo"))
 
         binding.goToHomeBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
