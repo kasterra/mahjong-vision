@@ -23,7 +23,7 @@ fun mapData(context:Context, yakuName:String): Array<String> {
         "Yakuhai(windofplace)"->context.resources.getStringArray(R.array.windofplace)
         "Yakuhai(windofround)"->context.resources.getStringArray(R.array.windofround)
         "Tanyao" -> context.resources.getStringArray(R.array.Tanyao)
-        "DaburuRiichi"->context.resources.getStringArray(R.array.DaburuRiichi)
+        "DoubleRiichi"->context.resources.getStringArray(R.array.DaburuRiichi)
         "Chiitoitsu" -> context.resources.getStringArray(R.array.Chiitoitsu)
         "Sanshoku" -> context.resources.getStringArray(R.array.Sanshoku)
         "Ittsu" -> context.resources.getStringArray(R.array.Ittsu)
