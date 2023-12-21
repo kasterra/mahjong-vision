@@ -3,8 +3,10 @@ package com.skeep.mahjongvision
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.skeep.mahjongvision.databinding.ActivitySurveyBinding
+import org.json.JSONObject
 
 class SurveyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +40,100 @@ class SurveyActivity : AppCompatActivity() {
             else
             {
                 //정보 정리해서 서버로 던지기
+                //val stringData = intent.getStringExtra("message")
+                val stringData = "{\"win\":\"5s\",\"dora\":[\"6p\",\"7s\",\"1p\",\"8p\"],\"hand\":[\"2m\",\"3m\",\"4m\",\"7m\",\"8m\",\"9m\",\"5p\",\"5p\",\"3s\",\"4s\"],\"huro\":{\"chi\":[],\"pong\":[],\"ankkang\":[[\"8s\",\"8s\",\"8s\",\"8s\"]],\"minkkang\":[]}}"
+                val surveyData = JSONObject()
+                if(selectedWinningMethodId == binding.tsumo.id) {
+                    surveyData.put("win_method", "tsumo")
+                } else {
+                    surveyData.put("win_method", "ron")
+                }
 
+                when(selectedRichiId) {
+                    binding.noRichi.id -> {
+                        surveyData.put("riichi", 0)
+                    }
+                    binding.oneRichi.id -> {
+                        surveyData.put("riichi", 1)
+                    }
+                    else -> {
+                        surveyData.put("riichi", 2)
+                    }
+                }
 
+                if(binding.ippatsu.isChecked)
+                    surveyData.put("ippatsu", true)
+                else
+                    surveyData.put("ippatsu", false)
+
+                when (selectedSeatWindId) {
+                    binding.seatWindEast.id -> {
+                        surveyData.put("seat_wind", "E")
+                    }
+                    binding.seatWindWest.id -> {
+                        surveyData.put("seat_wind", "W")
+                    }
+                    binding.seatWindSouth.id -> {
+                        surveyData.put("seat_wind", "S")
+                    }
+                    else -> {
+                        surveyData.put("seat_wind", "N")
+                    }
+                }
+
+                when (selectedPrevalentWindId) {
+                    binding.prevalentWindEast.id -> {
+                        surveyData.put("prevalent_wind", "E")
+                    }
+                    binding.prevalentWindWest.id -> {
+                        surveyData.put("prevalent_wind", "W")
+                    }
+                    binding.prevalentWindSouth.id -> {
+                        surveyData.put("prevalent_wind", "S")
+                    }
+                    else -> {
+                        surveyData.put("prevalent_wind", "N")
+                    }
+                }
+
+                when (selectedSpecialPointsId) {
+                    binding.changKkang.id -> {
+                        surveyData.put("chankkang", true)
+                        surveyData.put("haitei", false)
+                        surveyData.put("rinshan", false)
+                    }
+                    binding.haiTei.id -> {
+                        surveyData.put("chankkang", false)
+                        surveyData.put("haitei", true)
+                        surveyData.put("rinshan", false)
+                    }
+                    binding.youngSangGaeHwa.id -> {
+                        surveyData.put("chankkang", false)
+                        surveyData.put("haitei", false)
+                        surveyData.put("rinshan", true)
+                    }
+                    else -> {
+                        surveyData.put("chankkang", false)
+                        surveyData.put("haitei", false)
+                        surveyData.put("rinshan", false)
+                    }
+                }
+
+                var akaNum = 0
+                if(selectedFiveTong)
+                    akaNum++
+                if(selectedFiveMan)
+                    akaNum++
+                if(selectedFiveSac)
+                    akaNum++
+
+                surveyData.put("aka", akaNum)
+
+                val jsonData = JSONObject()
+                jsonData.putOpt("data", JSONObject(stringData))
+                jsonData.putOpt("information", surveyData)
+
+                Log.d("intent data",jsonData.toString())
                 //화면 전환
                 val intent = Intent(this, ResultActivity::class.java)
                 startActivity(intent)
