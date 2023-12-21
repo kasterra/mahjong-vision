@@ -149,9 +149,15 @@ class SurveyActivity : AppCompatActivity() {
                             return
                         }
                         Log.d("response data", response.body().toString())
-                        val intent = Intent(this@SurveyActivity, ResultActivity::class.java)
-                        intent.putExtra("message", response.body().toString())
-                        startActivity(intent)
+                        val isChonbo = JSONObject(response.body()!!)
+                        if(isChonbo.getJSONArray("yaku")[0] == "chonbo" ){
+                            val intent = Intent(this@SurveyActivity, NoResultActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            val intent = Intent(this@SurveyActivity, ResultActivity::class.java)
+                            intent.putExtra("message", response.body().toString())
+                            startActivity(intent)
+                        }
                     }
 
                     override fun onFailure(call: Call<String>, t: Throwable) {
