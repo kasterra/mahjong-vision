@@ -6,7 +6,7 @@
         <item>리치</item>
         <item>[멘젠필수] 후로 하지 않고 1000점을 걸고 화료</item>
     </string-array>
-    <string-array name="Tsumo">
+    <string-array name="MenzenTsumo">
         <item>멘젠쯔모</item>
         <item>멘젠인 상태에서 쯔모로 오름</item>
     </string-array>
@@ -50,7 +50,14 @@
         <item>삼원패 : 중</item>
         <item>중패를 커쯔나 깡쯔로 모음</item>
     </string-array>
-    <!--TODO: 자풍패, 장풍패 -->
+    <string-array name="windofplace">
+        <item>자풍패</item>
+        <item>본인의 자리와 일치하는 풍패</item>
+    </string-array>
+    <string-array name="windofround">
+        <item>장풍패</item>
+        <item>현재 장에 적용되는 풍패</item>
+    </string-array>
     <string-array name="Tanyao">
         <item>탕야오</item>
         <item>요구패가 하나도 포함되어 있지 않은 상태로 화료</item>
@@ -174,5 +181,85 @@
     <string-array name="Suukantsu">
         <item>사공자</item>
         <item>깡을 4번치고 화료</item>
+    </string-array>
+    <string-array name="base">
+        <item>기본 부수</item>
+        <item>기본적으로 주어지는 부수</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="penchan">
+        <item>변짱대기</item>
+        <item>12, 89 등 끝자리 패로 3, 7을 대기하고 있어 패가 한쪽밖에 없는 경우</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="kanchan">
+        <item>간짱대기</item>
+        <item>2,4 를 가지고 3을 대기하는 등 사이의 숫자를 노리는 경우</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="valued_pair">
+        <item>역패 머리</item>
+        <item>역패를 머리로 사용하는 경우</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="double_valued_pair">
+        <item>연풍패 머리</item>
+        <item>연풍패를 머리로 사용하는 경우</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="pair_wait">
+        <item>샤보대기</item>
+        <item>몸통 3개가 완성된 상태에서 머리가 2개가 있을 때</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="tsumo">
+        <item>쯔모</item>
+        <item>쯔모로 화료</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="hand_without_fu">
+        <item>0부</item>
+        <item>추가 부수가 붙지 않음</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="closed_pon">
+        <item>중장패 안커</item>
+        <item>요구패가 아닌 패로 안커를 만듦</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="open_pon">
+        <item>중장패 밍커</item>
+        <item>요구패가 아닌 패로 밍커를 만듦</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="closed_terminal_pon">
+        <item>요구패 안커</item>
+        <item>요구패로 안커를 만듦</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="open_terminal_pon">
+        <item>요구패 밍커</item>
+        <item>요구패로 안커를 만듦</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="closed_kan">
+        <item>중장패 안깡</item>
+        <item>요구패가 아닌 패로 안깡를 만듦</item>
+        <item>16</item>
+    </string-array>
+    <string-array name="closed_terminal_kan">
+        <item>요구패 안깡</item>
+        <item>요구패가 아닌 패로 안깡를 만듦</item>
+        <item>32</item>
+    </string-array>
+    <string-array name="open_kan">
+        <item>중장패 안깡</item>
+        <item>요구패가 아닌 패로 밍깡를 만듦</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="open_terminal_kan">
+        <item>요구패 안깡</item>
+        <item>요구패가 아닌 패로 밍깡를 만듦</item>
+        <item>16</item>
     </string-array>
 </resources>

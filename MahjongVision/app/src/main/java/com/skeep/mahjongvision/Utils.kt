@@ -6,10 +6,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.ViewGroup.LayoutParams
 
-fun mapData(context:Context, yakuName:String) {
+fun mapData(context:Context, yakuName:String): Array<String> {
     val arr =  when (yakuName){
         "Riichi" -> context.resources.getStringArray(R.array.Riichi)
-        "Tsumo" -> context.resources.getStringArray(R.array.Tsumo)
+        "MenzenTsumo" -> context.resources.getStringArray(R.array.MenzenTsumo)
         "Ippatsu" -> context.resources.getStringArray(R.array.Ippatsu)
         "Rinshan" -> context.resources.getStringArray(R.array.Rinshan)
         "Chankan" -> context.resources.getStringArray(R.array.Chankan)
@@ -17,9 +17,11 @@ fun mapData(context:Context, yakuName:String) {
         "Houtei" -> context.resources.getStringArray(R.array.Houtei)
         "Pinfu" -> context.resources.getStringArray(R.array.Pinfu)
         "Iipeiko" -> context.resources.getStringArray(R.array.Iipeiko)
-        "Haku" -> context.resources.getStringArray(R.array.Haku)
-        "Hatsu" -> context.resources.getStringArray(R.array.Hatsu)
-        "Chun" -> context.resources.getStringArray(R.array.Chun)
+        "Yakuhai(Haku)" -> context.resources.getStringArray(R.array.Haku)
+        "Yakuhai(Hatsu)" -> context.resources.getStringArray(R.array.Hatsu)
+        "Yakuhai(Chun)" -> context.resources.getStringArray(R.array.Chun)
+        "Yakuhai(windofplace)"->context.resources.getStringArray(R.array.windofplace)
+        "Yakuhai(windofround)"->context.resources.getStringArray(R.array.windofround)
         "Tanyao" -> context.resources.getStringArray(R.array.Tanyao)
         "DaburuRiichi"->context.resources.getStringArray(R.array.DaburuRiichi)
         "Chiitoitsu" -> context.resources.getStringArray(R.array.Chiitoitsu)
@@ -49,14 +51,28 @@ fun mapData(context:Context, yakuName:String) {
         "Shousuushii"->context.resources.getStringArray(R.array.Shousuushii)
         "Daisuushii"->context.resources.getStringArray(R.array.Daisuushii)
         "Suukantsu"->context.resources.getStringArray(R.array.Suukantsu)
-        else -> {
-            when {
-                yakuName.matches("Dora\\d+".toRegex()) -> context.resources.getStringArray(R.array.Dora)
-                yakuName.matches("Akadora\\d+".toRegex()) -> context.resources.getStringArray(R.array.Akadora)
-                else -> arrayOf("error", "what is the error")
-            }
-        }
+        "Dora"->context.resources.getStringArray(R.array.Dora)
+        "Akadora"->context.resources.getStringArray(R.array.Akadora)
+
+        "base"->context.resources.getStringArray(R.array.base)
+        "penchan"->context.resources.getStringArray(R.array.penchan)
+        "kanchan"->context.resources.getStringArray(R.array.kanchan)
+        "valued_pair"->context.resources.getStringArray(R.array.valued_pair)
+        "double_valued_pair"->context.resources.getStringArray(R.array.double_valued_pair)
+        "pair_wait"->context.resources.getStringArray(R.array.pair_wait)
+        "tsumo"->context.resources.getStringArray(R.array.tsumo)
+        "hand_without_fu"->context.resources.getStringArray(R.array.hand_without_fu)
+        "closed_pon"->context.resources.getStringArray(R.array.closed_pon)
+        "open_pon"->context.resources.getStringArray(R.array.open_pon)
+        "closed_terminal_pon"->context.resources.getStringArray(R.array.closed_terminal_pon)
+        "open_terminal_pon"->context.resources.getStringArray(R.array.open_terminal_pon)
+        "closed_kan"->context.resources.getStringArray(R.array.closed_kan)
+        "closed_terminal_kan"->context.resources.getStringArray(R.array.closed_terminal_kan)
+        "open_kan"->context.resources.getStringArray(R.array.open_kan)
+        "open_terminal_kan"->context.resources.getStringArray(R.array.open_terminal_kan)
+        else -> arrayOf("error", "what is the error")
     }
+    return arr
 }
 
 
