@@ -1,7 +1,7 @@
 from mahjong.hand_calculating.hand import HandCalculator
 from mahjong.tile import TilesConverter
 from mahjong.meld import Meld
-from mahjong.hand_calculating.hand_config import HandConfig
+from mahjong.hand_calculating.hand_config import HandConfig, OptionalRules
 import mahjong.constants
 import numpy as np
 
@@ -30,6 +30,9 @@ def get_additonal_information(data):
 
 # api function /calculate
 def calculate(data, information):
+    menzen = False
+    if len(data['huro']['minkkang']) + len(data['huro']['chi']) + len(data['huro']['pong']) == 0:
+        menzen = True
     config = information_to_hand_config(information)
     win_tile = hand_to_136_array([data['win']])[0]
     dora = hand_to_136_array(data['dora'])
@@ -46,23 +49,26 @@ def calculate(data, information):
     print(cal)
     if cal.error != None:
         return {
-            "yaku": "chonbo",
+            "yaku": ["chonbo"],
         }
     result = {
-        "yaku": cal.yaku,
-        "fu": cal.fu_details,
+        "yaku": [],
+        "fu": [],
     }
+    for i in cal.yaku:
+        result['yaku'].append({'name': i.name.replace(' ', ''), 'han': i.han_closed if menzen else i.han_open })
     for i in cal.fu_details:
-        result['fu'].append(i)
+        result['fu'].append(i['reason'])
     if information['win_method'] == "ron":
-        result['score'] = result.cost['main']
+        result['score'] = [cal.cost['main']]
     else:
-        result['score'] = [result.cost['main'], result.cost['additional']]
-
+        result['score'] = [cal.cost['main'], cal.cost['additional']]
+    print('result')
+    print(result)
     return result
 
 def information_to_hand_config(information):
-    handConfig = HandConfig()
+    handConfig = HandConfig(options=OptionalRules(has_open_tanyao=True))
     if information['win_method'] == "tsumo":
         handConfig.is_tsumo = True
     
@@ -80,6 +86,11 @@ def information_to_hand_config(information):
 
     handConfig.player_wind = str_to_constant[information['seat_wind']]
     handConfig.round_wind = str_to_constant[information['prevalent_wind']]
+    print("information")
+    handConfig.is_ippatsu = information['ippatsu']
+    
+    if information['seat_wind'] == "E":
+        handConfig.is_dealer = True
     
     handConfig.is_chankan = information['chankkang']
     if handConfig.is_tsumo:
@@ -91,6 +102,7 @@ def information_to_hand_config(information):
     return handConfig
 
 def hand_to_136_array(hand):
+    print(hand)
     man = ''
     pin = ''
     sou = ''

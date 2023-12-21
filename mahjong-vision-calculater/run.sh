@@ -1,1 +1,1 @@
-poetry run python main.py
+gunicorn --bind 0:8000 index:app --daemon --worker-class uvicorn.workers.UvicornWorker
