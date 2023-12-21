@@ -12,7 +12,7 @@ def convert_to_split_data(img: Image):
     x, y = img.size
 
     # Run inference on the source
-    predicts = model.predict(img, boxes=True, conf=0.7)  # list of Results objects
+    predicts = model.predict(img, boxes=True, imgsz=(x, y))  # list of Results objects
 
     result = []
     for r in predicts:

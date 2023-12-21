@@ -49,7 +49,7 @@ def calculate(data, information):
     print(cal)
     if cal.error != None:
         return {
-            "yaku": "chonbo",
+            "yaku": ["chonbo"],
         }
     result = {
         "yaku": [],
@@ -60,7 +60,7 @@ def calculate(data, information):
     for i in cal.fu_details:
         result['fu'].append(i['reason'])
     if information['win_method'] == "ron":
-        result['score'] = cal.cost['main']
+        result['score'] = [cal.cost['main']]
     else:
         result['score'] = [cal.cost['main'], cal.cost['additional']]
     print('result')
@@ -86,6 +86,8 @@ def information_to_hand_config(information):
 
     handConfig.player_wind = str_to_constant[information['seat_wind']]
     handConfig.round_wind = str_to_constant[information['prevalent_wind']]
+
+    handConfig.is_ippatsu = information['ippatsu']
     
     handConfig.is_chankan = information['chankkang']
     if handConfig.is_tsumo:
