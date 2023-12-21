@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SurveyActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/majan_woman"
+        android:layout_weight="3"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="화료 방법"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <RadioGroup
+            android:id="@+id/winningMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/tsumo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="쯔모" />
+
+            <RadioButton
+                android:id="@+id/ron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="론" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="리치 여부"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <RadioGroup
+            android:id="@+id/isRichi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/noRichi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="없음" />
+
+            <RadioButton
+                android:id="@+id/oneRichi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="리치" />
+
+            <RadioButton
+                android:id="@+id/doubleRichi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더블 리치" />
+        </RadioGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="장풍패"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <RadioGroup
+            android:id="@+id/prevalentWind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <RadioButton
+                android:id="@+id/prevalentWindEast"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="동" />
+            <RadioButton
+                android:id="@+id/prevalentWindSouth"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="남" />
+            <RadioButton
+                android:id="@+id/prevalentWindWest"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="서" />
+            <RadioButton
+                android:id="@+id/prevalentWindNorth"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="북" />
+        </RadioGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="자풍패"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <RadioGroup
+            android:id="@+id/seatWind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <RadioButton
+                android:id="@+id/seatWindEast"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="동" />
+            <RadioButton
+                android:id="@+id/seatWindSouth"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="남" />
+            <RadioButton
+                android:id="@+id/seatWindWest"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="서" />
+            <RadioButton
+                android:id="@+id/seatWindNorth"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="북" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="특수화료"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            />
+
+        <RadioGroup
+            android:id="@+id/specialPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/changKkang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="창깡" />
+
+            <RadioButton
+                android:id="@+id/youngSangGaeHwa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="영상개화" />
+
+            <RadioButton
+                android:id="@+id/haiTei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="하저/해저" />
+
+            <RadioButton
+                android:id="@+id/special_No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="없음" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="적도라"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/fiveMan"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:text="5만" />
+
+            <CheckBox
+                android:id="@+id/fiveTong"
+                android:layout_width="57dp"
+                android:layout_height="wrap_content"
+                android:text="5통" />
+            <CheckBox
+                android:id="@+id/fiveSac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5삭" />
+            <CheckBox
+                android:id="@+id/ippatsu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일발" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:layout_gravity="center"
+        android:id="@+id/post_btn"/>
+</LinearLayout>
