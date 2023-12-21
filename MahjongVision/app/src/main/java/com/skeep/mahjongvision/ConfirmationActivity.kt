@@ -13,6 +13,10 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.skeep.mahjongvision.databinding.ActivityConfirmationBinding
 import com.skeep.mahjongvision.databinding.ActivityGuideBinding
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
+import kotlin.math.min
 
 class ConfirmationActivity : AppCompatActivity() {
 
@@ -54,16 +58,18 @@ class ConfirmationActivity : AppCompatActivity() {
         "7z" to R.drawable.majan5_sangenpai3
     )
 
-    lateinit var handPais:List<String>
+    lateinit var handPais:JSONArray
     lateinit var winPai:String
-    lateinit var huroPais:List<String>
-    lateinit var doraPais:List<String>
+    lateinit var huroPais:MutableList<String>
+    lateinit var doraPais:JSONArray
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //api string data
         val data = intent.getStringExtra("message")
+        Log.d("api data", data!!)
+        val json = JSONTokener(data).nextValue() as JSONObject
 
         val binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -91,14 +97,44 @@ class ConfirmationActivity : AppCompatActivity() {
             queue.add(stringRequest)
         }
 
+        val doraJSON = json.getJSONArray("dora")
+        val huro = json.getJSONObject("huro")
+        val chi = huro.getJSONArray("chi")
+        val pong = huro.getJSONArray("pong")
+        val ankkang = huro.getJSONArray("ankkang")
+        val minkkang = huro.getJSONArray("minkkang")
+
+
         //목업 데이터
-        handPais = listOf("1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m")
-        winPai = "1z"
-        huroPais = listOf("1p", "2p", "3p", "4p", "5p", "6p", "7p")
-        doraPais = listOf("1s", "2s", "3s", "4s"    )
+        handPais = json.getJSONArray("hand")
+        winPai = json.getString("win")
+        huroPais = mutableListOf()
+        doraPais = json.getJSONArray("dora")
+
+        for (i in 0 until chi.length()) {
+            for (j in 0 until chi.getJSONArray(i).length()) {
+                huroPais.add(chi.getJSONArray(i)[j].toString())
+            }
+        }
+        for (i in 0 until pong.length()) {
+            for (j in 0 until pong.getJSONArray(i).length()) {
+                huroPais.add(pong.getJSONArray(i)[j].toString())
+            }
+        }
+        for (i in 0 until ankkang.length()) {
+            for (j in 0 until ankkang.getJSONArray(i).length()) {
+                huroPais.add(ankkang.getJSONArray(i)[j].toString())
+            }
+        }
+        for (i in 0 until minkkang.length()) {
+            for (j in 0 until minkkang.getJSONArray(i).length()) {
+                huroPais.add(minkkang.getJSONArray(i)[j].toString())
+            }
+        }
 
         //손패 넣기
-        for (pai in handPais) {
+        for (i in 0 until handPais.length()) {
+            val pai = handPais[i]
             val paiview = ImageView(this)
             val resource = paiResourceMap[pai]
 
@@ -140,7 +176,8 @@ class ConfirmationActivity : AppCompatActivity() {
         }
 
         //도라패 넣기
-        for (pai in doraPais) {
+        for (i in 0 until doraPais.length()) {
+            val pai = doraPais[i]
             val paiview = ImageView(this)
             val resource = paiResourceMap[pai]
 
@@ -158,6 +195,7 @@ class ConfirmationActivity : AppCompatActivity() {
         //맞아 틀려 버튼
         binding.acceptBtn.setOnClickListener {
             val intent = Intent(this, SurveyActivity::class.java)
+            intent.putExtra("message", data)
             startActivity(intent)
         }
 

@@ -81,6 +81,7 @@ class CameraActivity : AppCompatActivity() {
                                 val result = response.body()!!
                                 val intent = Intent(this@CameraActivity, ConfirmationActivity::class.java)
                                 intent.putExtra("message", result)
+                                startActivity(intent)
                                 Log.d("request", response.body()!!)
                             }
                             override fun onFailure(call: Call<String>, t: Throwable) {
