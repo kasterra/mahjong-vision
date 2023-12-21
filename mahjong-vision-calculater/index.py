@@ -39,7 +39,7 @@ async def create_file(response: Response, file: bytes = File()):
         response.status_code = status.HTTP_400_BAD_REQUEST
         return result
 
-@app.get("/calculate")
+@app.post("/calculate")
 def calculate_yaku(handData: HandData):
     print(handData)
     return calculate(handData.data, handData.information)

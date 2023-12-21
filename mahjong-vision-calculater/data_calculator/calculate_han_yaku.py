@@ -1,7 +1,7 @@
 from mahjong.hand_calculating.hand import HandCalculator
 from mahjong.tile import TilesConverter
 from mahjong.meld import Meld
-from mahjong.hand_calculating.hand_config import HandConfig
+from mahjong.hand_calculating.hand_config import HandConfig, OptionalRules
 import mahjong.constants
 import numpy as np
 
@@ -68,7 +68,7 @@ def calculate(data, information):
     return result
 
 def information_to_hand_config(information):
-    handConfig = HandConfig()
+    handConfig = HandConfig(options=OptionalRules(has_open_tanyao=True))
     if information['win_method'] == "tsumo":
         handConfig.is_tsumo = True
     
@@ -86,8 +86,11 @@ def information_to_hand_config(information):
 
     handConfig.player_wind = str_to_constant[information['seat_wind']]
     handConfig.round_wind = str_to_constant[information['prevalent_wind']]
-
+    print("information")
     handConfig.is_ippatsu = information['ippatsu']
+    
+    if information['seat_wind'] == "E":
+        handConfig.is_dealer = True
     
     handConfig.is_chankan = information['chankkang']
     if handConfig.is_tsumo:
@@ -99,6 +102,7 @@ def information_to_hand_config(information):
     return handConfig
 
 def hand_to_136_array(hand):
+    print(hand)
     man = ''
     pin = ''
     sou = ''
