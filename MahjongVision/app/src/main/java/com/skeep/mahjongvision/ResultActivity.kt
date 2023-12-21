@@ -10,7 +10,7 @@ import org.json.JSONObject
 
 
 class ResultActivity : AppCompatActivity() {
-    private val IS_MOCK = true
+    private val IS_MOCK = false
     private val MOCK_DATA =
         "{\"yaku\":[{\"name\":\"MenzenTsumo\",\"han\":1},{\"name\":\"Dora\",\"han\":4}],\"fu\":[\"base\",\"closed_kan\",\"tsumo\"],\"score\":[4000,2000]}"
     override fun onCreate(savedInstanceState: Bundle?) {
