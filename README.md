@@ -1,3 +1,7 @@
+# mahjong-vision-hybrid
+
+<https://github.com/skeep194/mahjong-vision-hybrid>에 현재 유지보수 중인 React Native 기반 어플리케이션이 등록되어 있습니다. 관심 있으신 분들의 참고 바랍니다
+
 # MahjongVision
 
 OCR 기반 리치마작 계산기
